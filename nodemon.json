@@ -1,0 +1,6 @@
+{
+  "watch": [
+    "Cineport/**/*"
+  ],
+  "ext": "js,json,ejs"
+}

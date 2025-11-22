@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/watchlist.css">
+    <title>Cineport</title>
+</head>
+
+<body>
+    <h1>watchlist</h1>
+    <% watchlist.forEach(item=> { %>
+        <a href="<%= item.id %>"><img src="<%= item.image %>" alt="<%= item.title %>" class="movie"></a>
+        <% }) %>
+</body>
+
+</html>

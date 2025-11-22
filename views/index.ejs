@@ -15,7 +15,14 @@
         <form action="/login/logout" method="get">
             <button type="submit">Logout</button>
         </form>
-        <% } %>
+
+        <% } else { %>
+            <a href="/login">
+                <button>Login</button>
+            </a>
+
+            <% } %>
+                <a href="/watchlist"><button>watchlist</button></a>
 </body>
 
 </html>

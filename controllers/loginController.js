@@ -28,6 +28,6 @@ exports.logout = async (req, res) => {
             return res.status(500).send('Could not log out.');
         }
         res.clearCookie('connect.sid');
-        res.send({ message: 'Logged out successfully.' });
+        res.redirect('/');
     });
 }

@@ -42,6 +42,8 @@ app.use('/login', require('./routes/login'));
 
 app.use('/watchlist', require('./routes/watchlist'));
 
+app.use('/info', require('./routes/info'));
+
 app.listen(port, () => {
   console.log(`listening on http://localhost:${port}`)
 })

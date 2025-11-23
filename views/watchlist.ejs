@@ -11,7 +11,7 @@
 <body>
     <h1>watchlist</h1>
     <% watchlist.forEach(item=> { %>
-        <a href="<%= item.id %>"><img src="<%= item.image %>" alt="<%= item.title %>" class="movie"></a>
+        <a href="/info/<%= item.id %>"><img src="<%= item.image %>" alt="<%= item.title %>" class="movie"></a>
         <% }) %>
 </body>
 

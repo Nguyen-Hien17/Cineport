@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/info.css">
+    <title>Cineport</title>
+</head>
+
+<body>
+    <h1>Info</h1>
+    <p>
+        <%= info.title %>
+    </p>
+    <p>
+        <%= info.summary %>
+    </p>
+    <p>Genre</p>
+    <% info.genre.forEach(item=> { %>
+        <p>
+            <%= item %>
+        </p>
+        <% }) %>
+
+            <p>Available at:</p>
+
+            <% info.sources.forEach(source=> { %>
+                <div>
+                    <p>
+                        <%= source.name %>
+                    </p>
+                    <a href="<%= source.iosURL %>">iOS</a>
+                    <a href="<%= source.androidURL %>">Android</a>
+                    <a href="<%= source.webURL %>">Web</a>
+                    <img src="<%= source.logo %>" alt="<%= source.name %> logo">
+                </div>
+                <% }) %>
+
+                    <img src="<%= info.poster %>" alt="<%= info.title %> poster">
+                    <% if (info.episodes) { %>
+                        <p>Episodes</p>
+                        <% info.episodes.forEach(episode=> { %>
+                            <div>
+                                <p>Season: <%= episode.season_number %>
+                                </p>
+                                <p>Episode: <%= episode.episode_number %>
+                                </p>
+                                <p>
+                                    <%= episode.name %>
+                                </p>
+                                <img src="<%= episode.thumbnail_url%>"
+                                    alt="Episode <%= episode.episode_number %> thumbnail" class="thumbnail">
+                            </div>
+                            <% }) %>
+                                <% } %>
+</body>
+
+</html>

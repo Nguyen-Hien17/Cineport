@@ -20,8 +20,6 @@ body {
 }
 
 .sidebar {
-    /*Uncomment below to have the same consitent background as body*/
-    /* background-color: transparent; */
     top: 0;
     left: 0;
     height: 100%;
@@ -29,6 +27,17 @@ body {
     position: fixed;
     padding: 10px 14px;
     z-index: 100;
+}
+
+.sidebar .cineport-logo {
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .cineport-logo img {
+    scale: 0.2;
 }
 
 .sidebar .text {
@@ -71,7 +80,7 @@ body {
 }
 
 .sidebar .menu-bar {
-    height: calc(100% - 80px);
+    height: calc(100% - 18%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

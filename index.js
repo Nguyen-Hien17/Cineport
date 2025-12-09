@@ -48,7 +48,7 @@ app.use('/info', require('./routes/info'));
 
 // Sidebar debug route
 app.get ('/sidebar', (req, res) => {
-  res.render('sidebar');
+  res.render('component/sidebar');
 });
 
 app.get ('/search', (req, res) => {

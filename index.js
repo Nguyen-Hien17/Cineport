@@ -55,9 +55,6 @@ app.get ('/search', (req, res) => {
   res.render('search');
 });
 
-app.get ('/home', (req, res) => {
-  res.render('home');
-});
 
 app.listen(port, () => {
   console.log(`listening on http://localhost:${port}`)

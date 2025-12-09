@@ -38,6 +38,8 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.use('/signup', require('./routes/signup'));
+
 app.use('/login', require('./routes/login'));
 
 app.use('/watchlist', require('./routes/watchlist'));

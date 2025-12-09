@@ -1,6 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Work Sans", sans-serif;
+}
+
+:root {
+    --gradient-start: #040E22;
+    --gradient-end: #0E2D6B;
+    --text-color: #FFFFFF;
+    --search-box-color: rgba(220, 220, 220, 0.65);
+    --button-color: #39444D;
+}
+
+body {
+    background: linear-gradient(90deg, var(--gradient-start) 0%, var(--gradient-end) 50%);
+    height: 80vh;
+}
+
+.sign-up-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-container .logo {
+    height: 404px;
+    scale: 0.5;
+}
+
+.sign-up-form {
+    width: 25%;
+}
+
+.account-input {
+    display: flex;
+    background: var(--gradient-start);
+    opacity: 0.8;
+    border-radius: 50px;
+    padding: 27px 40px;
+    margin-bottom: 13px;
+}
+
+.account-input input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background: var(--gradient-start);
+    color: var(--search-box-color);
+}
+
+.sign-up-form .sign-up-button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-form .sign-up-button button {
+    width: 30%;
+    height: 50px;
+    border-radius: 40px;
+    font-size: 1rem;
+    border: 1.5px double #2B3338;
+    background-color: var(--button-color);
+    color: #D1D1D1;
+    cursor: pointer;
+}
+
 .error {
-    color: red;
-    font-size: 14px;
+    margin-left:30px;
+    color: #C70000;
+    font-size: 16px;
     margin-bottom: 10px;
     display: none;
 }

@@ -6,32 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cineport</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
-    <div class="login">
-        <div class="login-align">
-            <span class="logo">
-                <a href="#">
-                    <img src="image/cineport_logo.png" alt="">
-                </a>
-            </span>
-            <span class="login-form">
-                <form action="/login" method="POST" id="loginForm">
-                    <!-- <label for="email">Email</label> -->
-                    <li class="form-style">
-                        <input type="email" placeholder="Email" name="email">
-                        <!-- <label for="password">Password</label>  -->
-                    </li>
-                    <li class="form-style">
-                        <input type="password" placeholder="Password" name="password">
-                    </li>
+    <nav class="login-container">
+        <span class="logo">
+            <a href="#">
+                <img src="image/cineport_logo.png" alt="">
+            </a>
+        </span>
+        <span class="login-form">
+            <form action="/login" method="POST" id="loginForm">
+                <!-- <label for="email">Email</label> -->
+                <li class="account-input">
+                    <input type="email" placeholder="Enter your email" name="email">
+                </li>
+                <!-- <label for="password">Password</label>  -->
+                <li class="account-input">
+                    <input type="password" placeholder="Password" name="password">
+                </li>
+                <div class="login-button">
                     <button type="submit">Log In</button>
-                </form>
-            </span>
-        </div>
-    </div>
+                </div>
+            </form>
+        </span>
+    </nav>
 </body>
 
 </html>

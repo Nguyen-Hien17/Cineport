@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { User } = require('../models/user');
 
 exports.getTitleInfo = async (imdbID) => {
 
@@ -16,6 +17,7 @@ exports.getTitleInfo = async (imdbID) => {
     const sourceList = sourceListRes.data;
 
     let title = {
+        id: info.id,
         name: info.title,
         summary: info.plot_overview,
         genre: info.genre_names,
@@ -46,6 +48,34 @@ exports.getTitleInfo = async (imdbID) => {
     return title;
 };
 
+exports.checkInWatchlist = async (userId, titleId) => {
+    const filter = {
+        _id: userId,
+        'watchlist.titleId': titleId
+    };
+
+    // 2. Projection Criteria: Only return the 'watchlist' field, using $elemMatch to filter the array content.
+    const projection = {
+        watchlist: {
+            $elemMatch: { titleId: titleId }
+        },
+        _id: 0 // Optional: exclude the user's main _id from the result
+    };
+
+    try {
+        const result = await User.findOne(filter, projection).exec();
+
+        if (result && result.watchlist && result.watchlist.length > 0) {
+            return result.watchlist[0];
+        } else {
+            return null; // Return null if nothing matched the criteria
+        }
+    } catch (error) {
+        console.error("Error fetching watchlist item:", error);
+        throw error;
+    }
+
+}
 
 function getUniqueSources(sources) {
     const seen = new Set();

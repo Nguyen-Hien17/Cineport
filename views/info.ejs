@@ -78,6 +78,18 @@
                                             </p>
                                             <img src="<%= episode.thumbnail_url%>"
                                                 alt="Episode <%= episode.episode_number %> thumbnail" class="thumbnail">
+                                            <p>Sources:</p>
+                                            <% episode.sources.forEach(source=> { %>
+                                                <div>
+                                                    <p>
+                                                        <%= source.name %>
+                                                    </p>
+                                                    <a href="<%= source.iosURL %>">iOS</a>
+                                                    <a href="<%= source.androidURL %>">Android</a>
+                                                    <a href="<%= source.webURL %>">Web</a>
+                                                    <img src="<%= source.logo %>" alt="<%= source.name %> logo">
+                                                </div>
+                                                <% }) %>
                                         </div>
                                         <% }) %>
                                             <% } %>

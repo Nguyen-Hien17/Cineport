@@ -45,6 +45,29 @@ exports.getTitleInfo = async (imdbID) => {
 
     title.sources = sources;
 
+    if (info.episodes) {
+        title.episodes = info.episodes.map(ep => {
+            let uniqueEpSources = getUniqueSources(ep.sources || []);
+
+            let mappedEpSources = uniqueEpSources.map(src => {
+                const target = binarySearch(sourceList, src.source_id);
+
+                return {
+                    name: src.name,
+                    iosURL: src.ios_url,
+                    androidURL: src.android_url,
+                    webURL: src.web_url,
+                    logo: target ? target.logo_100px : null
+                };
+            });
+
+            return {
+                ...ep,
+                sources: mappedEpSources
+            };
+        });
+    }
+
     return title;
 };
 

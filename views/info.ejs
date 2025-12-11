@@ -23,7 +23,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
     <div class="background-opacity">
         <section class="movie-info-container">
             <nav class="back-button">
@@ -32,7 +31,14 @@
                 </a>
             </nav>
             <div class="main-content">
-                <span class="movie-title"><%= info.name %></span>
+                <div class="movie-title">
+                    <span><%= info.name %></span>
+                </div>
+                <div class="general-info">
+                    <span><%= info.runtime%></span>
+                    <span><%= info.releaseYear%></span>
+                    <span></span>
+                </div>
                 <p>
                     <%= info.summary %>
                 </p>
@@ -81,80 +87,6 @@
             </div>
         <% }) %>
     <% } %> -->
-=======
-    <h1>Info</h1>
-    <p>
-        <%= info.title %>
-    </p>
-    <p>
-        <%= info.summary %>
-    </p>
-    <p>Genre</p>
-    <% info.genre.forEach(item=> { %>
-        <p>
-            <%= item %>
-        </p>
-        <% }) %>
-
-            <% if (!status && user) { %>
-                <p>Add to watchlist:</p>
-                <form action="/watchlist/add" method="GET">
-                    <select name="watchStatus">
-                        <option value="watching">Watching</option>
-                        <option value="completed">Completed</option>
-                        <option value="plan_to_watch">Plan to watch</option>
-                        <option value="dropped">Dropped</option>
-                    </select>
-                    <input type="hidden" name="titleId" value="<%= info.id %>">
-                    <button type="submit">Add</button>
-                </form>
-                <% } else if(status && user) { %>
-                    <p>Progress: <%=status.status %>
-                    </p>
-                    <form action="/watchlist/add" method="GET">
-                        <select name="watchStatus">
-                            <option value="watching">Watching</option>
-                            <option value="completed">Completed</option>
-                            <option value="plan_to_watch">Plan to watch</option>
-                            <option value="dropped">Dropped</option>
-                        </select>
-                        <input type="hidden" name="titleId" value="<%= info.id %>">
-                        <button type="submit">Update</button>
-                    </form>
-                    <% } %>
-
-                        <p>Available at:</p>
-
-                        <% info.sources.forEach(source=> { %>
-                            <div>
-                                <p>
-                                    <%= source.name %>
-                                </p>
-                                <a href="<%= source.iosURL %>">iOS</a>
-                                <a href="<%= source.androidURL %>">Android</a>
-                                <a href="<%= source.webURL %>">Web</a>
-                                <img src="<%= source.logo %>" alt="<%= source.name %> logo">
-                            </div>
-                            <% }) %>
-
-                                <img src="<%= info.poster %>" alt="<%= info.title %> poster">
-                                <% if (info.episodes) { %>
-                                    <p>Episodes</p>
-                                    <% info.episodes.forEach(episode=> { %>
-                                        <div>
-                                            <p>Season: <%= episode.season_number %>
-                                            </p>
-                                            <p>Episode: <%= episode.episode_number %>
-                                            </p>
-                                            <p>
-                                                <%= episode.name %>
-                                            </p>
-                                            <img src="<%= episode.thumbnail_url%>"
-                                                alt="Episode <%= episode.episode_number %> thumbnail" class="thumbnail">
-                                        </div>
-                                        <% }) %>
-                                            <% } %>
->>>>>>> ffee628ffc8f3453ad734149f29fdd3bef43825f
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,10 @@
     <!-- css -->
     <link rel="stylesheet" href="/css/sidebar.css" />
     <link rel="stylesheet" href="/css/movie.css" />
-    
+
     <!-- Boxicons CSS -->
     <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
-    
+
     <title>Cineport</title>
 </head>
 
@@ -53,15 +54,43 @@
                         </li>
                     </ul>
                 </div>
-    
-                <div class="bottom-content">
+            </a>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <!-- Add link -->
+                <ul class="sidebar-links">
                     <li class="nav-link">
                         <a href="#">
-                            <i class='bx  bx-user icon'></i>
-                            <span class="text">Account</span>
+                            <i class='bx  bx-home icon'></i>
+                            <span class="text">Home</span>
                         </a>
                     </li>
-                </div>
+
+                    <li class="nav-link">
+                        <a href="/watchlist">
+                            <i class='bx  bx-categories icon'></i>
+                            <span class="text">Watchlist</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx  bx-grid-plus icon'></i>
+                            <span class="text">Add-on</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx  bx-user icon'></i>
+                        <span class="text">Account</span>
+                    </a>
+                </li>
             </div>
         </div>
     </nav>
@@ -70,32 +99,47 @@
     <div class="search-header">
         <li class="search-box">
             <input type="text" placeholder="Search">
-            <i class='bx  bx-search icon'></i> 
+            <i class='bx  bx-search icon'></i>
         </li>
+        <form action="/search" method="GET" class="search-box">
+            <input type="text" placeholder="Search" name="keyword">
+            <button class='bx  bx-search icon'> </button>
+        </form>
+
     </div>
 
     <!-- Main page content goes here. -->
     <section class="home">
-         <div class="title">
+        <div class="title">
             <span>Trending</span>
             <div class="movie-carousel">
-                <a href="/info/1616694"><img src="https://cdn.watchmode.com/posters/01616694_poster_w342.jpg" alt="treding title 1" class="movie"></a>
-                <a href="/info/1150091"><img src="https://cdn.watchmode.com/posters/01150091_poster_w342.jpg" alt="treding title 2" class="movie"></a>
-                <a href="/info/1186054"><img src="https://cdn.watchmode.com/posters/01186054_poster_w342.jpg" alt="treding title 3" class="movie"></a>
-                <a href="/info/1209560"><img src="https://cdn.watchmode.com/posters/01209560_poster_w342.jpg" alt="treding title 4" class="movie"></a>
-                <a href="/info/1451609"><img src="https://cdn.watchmode.com/posters/01451609_poster_w342.jpg" alt="treding title 5" class="movie"></a>
+                <a href="/info/1616694"><img src="https://cdn.watchmode.com/posters/01616694_poster_w342.jpg"
+                        alt="treding title 1" class="movie"></a>
+                <a href="/info/1150091"><img src="https://cdn.watchmode.com/posters/01150091_poster_w342.jpg"
+                        alt="treding title 2" class="movie"></a>
+                <a href="/info/1186054"><img src="https://cdn.watchmode.com/posters/01186054_poster_w342.jpg"
+                        alt="treding title 3" class="movie"></a>
+                <a href="/info/1209560"><img src="https://cdn.watchmode.com/posters/01209560_poster_w342.jpg"
+                        alt="treding title 4" class="movie"></a>
+                <a href="/info/1451609"><img src="https://cdn.watchmode.com/posters/01451609_poster_w342.jpg"
+                        alt="treding title 5" class="movie"></a>
             </div>
-         </div>
-         <div class="title">
+        </div>
+        <div class="title">
             <span>Most Watched</span>
             <div class="movie-carousel">
-                <a href="/info/138014"><img src="https://cdn.watchmode.com/posters/0138014_poster_w342.jpg" alt="most watched title 1" class="movie"></a>
-                <a href="/info/144341"><img src="https://cdn.watchmode.com/posters/0144341_poster_w342.jpg" alt="most watched title 2" class="movie"></a>
-                <a href="/info/1359290"><img src="https://cdn.watchmode.com/posters/01359290_poster_w342.jpg" alt="most watched title 3" class="movie"></a>
-                <a href="/info/1184713"><img src="https://cdn.watchmode.com/posters/01184713_poster_w342.jpg" alt="most watched title 4" class="movie"></a>
-                <a href="/info/1357583"><img src="https://cdn.watchmode.com/posters/01357583_poster_w342.jpg" alt="most watched title 5" class="movie"></a>
+                <a href="/info/138014"><img src="https://cdn.watchmode.com/posters/0138014_poster_w342.jpg"
+                        alt="most watched title 1" class="movie"></a>
+                <a href="/info/144341"><img src="https://cdn.watchmode.com/posters/0144341_poster_w342.jpg"
+                        alt="most watched title 2" class="movie"></a>
+                <a href="/info/1359290"><img src="https://cdn.watchmode.com/posters/01359290_poster_w342.jpg"
+                        alt="most watched title 3" class="movie"></a>
+                <a href="/info/1184713"><img src="https://cdn.watchmode.com/posters/01184713_poster_w342.jpg"
+                        alt="most watched title 4" class="movie"></a>
+                <a href="/info/1357583"><img src="https://cdn.watchmode.com/posters/01357583_poster_w342.jpg"
+                        alt="most watched title 5" class="movie"></a>
             </div>
-         </div>
+        </div>
     </section>
 
 </body>

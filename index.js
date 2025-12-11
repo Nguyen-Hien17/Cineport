@@ -51,10 +51,11 @@ app.get ('/sidebar', (req, res) => {
   res.render('component/sidebar');
 });
 
-app.get ('/search', (req, res) => {
-  res.render('search');
-});
+// app.get ('/search', (req, res) => {
+//   res.render('search');
+// });
 
+app.use('/search', require('./routes/search'));
 
 app.listen(port, () => {
   console.log(`listening on http://localhost:${port}`)

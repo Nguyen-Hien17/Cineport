@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- css -->
     <link rel="stylesheet" href="/css/sidebar.css" />
-    
+    <link rel="stylesheet" href="/css/movie.css" />
+
     <!-- Boxicons CSS -->
     <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
-    
+
     <title>Cineport</title>
 </head>
 
@@ -18,8 +20,8 @@
         <header>
             <a href="#">
                 <div>
-                    <span class="cineport_logo">
-                        <img src="/image/cineport_logo_notext.png" alt="Cineport Logo">
+                    <span class="cineport-logo">
+                        <img src="/image/cineport_logo.png" alt="Cineport Logo">
                     </span>
                 </div>
             </a>
@@ -27,25 +29,25 @@
 
         <div class="menu-bar">
             <div class="menu">
-                    <!-- Add link -->
+                <!-- Add link -->
                 <ul class="sidebar-links">
                     <li class="nav-link">
                         <a href="#">
-                            <i class='bx  bx-home icon'></i> 
+                            <i class='bx  bx-home icon'></i>
                             <span class="text">Home</span>
                         </a>
                     </li>
-                    
+
                     <li class="nav-link">
                         <a href="/watchlist">
-                            <i class='bx  bx-categories icon'></i> 
+                            <i class='bx  bx-categories icon'></i>
                             <span class="text">Watchlist</span>
                         </a>
                     </li>
-                    
+
                     <li class="nav-link">
                         <a href="#">
-                            <i class='bx  bx-grid-plus icon'></i> 
+                            <i class='bx  bx-grid-plus icon'></i>
                             <span class="text">Add-on</span>
                         </a>
                     </li>
@@ -65,17 +67,22 @@
 
     <!-- Search bar -->
     <div class="search-header">
-        <li class="search-box">
-            <input type="text" placeholder="Search">
-            <i class='bx  bx-search icon'></i> 
-        </li>
+        <form action="/search" method="GET" class="search-box">
+            <input type="text" placeholder="Search" name="keyword">
+            <button class='bx  bx-search icon'> </button>
+        </form>
     </div>
 
     <!-- Main page content goes here. -->
     <section class="home">
-         <div class="title">
-            <span>Search</span>
-         </div>
+
+        <% if (results) { %>
+            <% results.forEach(item=> { %>
+                <a href="/info/<%= item.id %>"><img src="<%= item.image %>" alt="<%= item.title %>" class="movie"></a>
+                <% }) %>
+                    <% } else { %>
+                        <p>no results</p>
+                        <% } %>
     </section>
 
 </body>

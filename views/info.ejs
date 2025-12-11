@@ -35,28 +35,68 @@
                     <span><%= info.name %></span>
                 </div>
                 <div class="general-info">
-                    <span><%= info.runtime%></span>
+                    <span><%= info.runtime%> minutes</span>
                     <span><%= info.releaseYear%></span>
-                    <span></span>
+                    <span><%= info.rating%></span>
                 </div>
-                <p>
-                    <%= info.summary %>
-                </p>
-                <p>Genre</p>
-                <% info.genre.forEach(item=> { %>
-                    <p>
-                        <%= item %>
-                    </p>
-                <% }) %>
+                <div class="movie-genre">
+                    <div class="section-header">
+                        <span>Genre</span>
+                    </div>
+                    <div class="genre-list">
+                        <% info.genre.forEach(item=> { %>
+                        <span class="genre-item">
+                            <%= item %>
+                        </span>
+                        <% }) %>
+                    </div>
+                </div>
+                <div class="movie-summary">
+                    <div class="section-header">
+                        <span>Summary</span>
+                    </div>
+                    <span class="synopsis">
+                        <%= info.summary %>
+                    </span>
+                </div>
+                <div class="watchlist-button">
+                    <button id="watchlist-btn">Add to Watchlist</button>
+                </div>
             </div>
             </section>
         <section class="movie-source-container">
-    
+            <div class="episode-list">
+                <div class="section-header">
+                    <span>Episodes</span>
+                </div>
+                <% if (info.episodes) { %>
+                    <% info.episodes.forEach(episode=> { %>
+                        <div class="episodes">
+                            <img src="<%= episode.thumbnail_url%>" alt="Episode <%= episode.episode_number %> thumbnail" class="thumbnail">
+                            <div class="episode-info">
+                                <span class="ep-name">
+                                    <%= episode.name %>
+                                </span>
+                                <br>
+                                <span class="season">
+                                    Season: <%= episode.season_number %>
+                                </span>
+                                <br>
+                                <span class="ep-number">
+                                    Episode: <%= episode.episode_number %>
+                                </span>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+            <div class="source-list">
+            </div>
         </section>
     </div>
-<!--     
+    
 
-    <p>Available at:</p>
+    <!-- <p>Available at:</p>
 
     <% info.sources.forEach(source=> { %>
         <div>

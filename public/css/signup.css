@@ -70,7 +70,7 @@ body {
     border-radius: 40px;
     font-size: 1rem;
     border: 1.5px double #2B3338;
-    background-color: var(--button-color);
+    background-color: linear-gradient(90deg,rgba(4, 14, 34, 0.8) 0%, rgba(14, 45, 107, 0.8) 100%);
     color: #D1D1D1;
     cursor: pointer;
 }

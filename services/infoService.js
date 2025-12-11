@@ -25,6 +25,7 @@ exports.getTitleInfo = async (imdbID) => {
         backdrop: info.backdrop,
         runtime: info.runtime_minutes,
         releaseYear: info.year,
+        rating: info.user_rating,
         ...(info.episodes && { episodes: info.episodes })
     };
 

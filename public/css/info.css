@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
     margin: 0;
@@ -15,7 +16,8 @@
 }
 
 body {
-    color: var(--text-color)
+    color: var(--text-color);
+    font-weight: 400;
 }
 
 .background-opacity {
@@ -50,10 +52,142 @@ body {
     width: 45%;
     background: linear-gradient(90deg,rgba(4, 14, 34, 0.8) 0%, rgba(14, 45, 107, 0.8) 100%);
     border-radius: 50px 0px 0px 50px;
+    padding: 0px 20px 0px 40px;
+    display: flex;
 }
 
-/* 
+.main-content {
+    margin-top: 40px;
+    margin-left: 50px;
+    width: 70%;
+}
+
+.movie-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 20px 0px;
+}
+
+.general-info {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    width: 75%;
+    font-size: 1.4rem;
+    font-weight: 300;
+    display: table;
+    table-layout: fixed;
+    /* padding: 10px 0px 20px; */
+}
+
+.general-info span {
+    display: table-cell;
+    text-align: center;
+}
+
+.section-header {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    margin-top: 35px;
+    color: var(--search-box-color)
+}
+
+.genre-list {
+    display: flex;
+    row-gap: 10px;
+    column-gap: 20px;
+    flex-wrap: wrap;
+}
+
+.genre-item {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 25px;
+    border-radius: 40px;
+    font-size: 1.3rem;
+    color: var(--search-box-color);
+}
+
+.synopsis {
+    display: flex;
+    width: 75%;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.watchlist-button {
+    margin-top: 30px;
+}
+
+.watchlist-button button {
+    width: 30%;
+    height: 50px;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 1.5px solid var(--gradient-start);
+    background-image: linear-gradient(90deg, var(--gradient-start) 0%, var(--gradient-end) 50%);
+    color: #ffffffd8;
+    cursor: pointer;
+}
+
+.episode-list {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 60%;
+    height: 100%;
+    padding: 0px 20px;
+}
+
+.source-list {
+    width: 40%;
+    height: 100%;
+    padding: 0px 20px;
+}
+
+.episode-list .episodes {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    background-color: #54545454;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0A204D;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
 .thumbnail{
-    width: 100px;
-    height: 150px;
-} */
+    height: 100px;
+    border-radius: 20px 0px 0px 20px;
+}
+
+.episode-info {
+    margin-left: 15px;
+}
+
+.ep-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+}

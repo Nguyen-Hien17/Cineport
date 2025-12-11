@@ -7,6 +7,7 @@
 
     <!-- css -->
     <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/movie.css" />
 
     <!-- Boxicons CSS -->
     <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
@@ -19,8 +20,8 @@
         <header>
             <a href="#">
                 <div>
-                    <span class="cineport_logo">
-                        <img src="/image/cineport_logo_notext.png" alt="Cineport Logo">
+                    <span class="cineport-logo">
+                        <img src="/image/cineport_logo.png" alt="Cineport Logo">
                     </span>
                 </div>
             </a>
@@ -66,22 +67,14 @@
 
     <!-- Search bar -->
     <div class="search-header">
-        <li class="search-box">
-            <input type="text" placeholder="Search">
-            <i class='bx  bx-search icon'></i>
-        </li>
-    </div>
-
-    <!-- Main page content goes here. -->
-    <section class="home">
-        <div class="title">
-            <span>Search</span>
-        </div>
-
         <form action="/search" method="GET" class="search-box">
             <input type="text" placeholder="Search" name="keyword">
             <button class='bx  bx-search icon'> </button>
         </form>
+    </div>
+
+    <!-- Main page content goes here. -->
+    <section class="home">
 
         <% if (results) { %>
             <% results.forEach(item=> { %>

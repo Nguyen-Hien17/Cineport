@@ -22,8 +22,8 @@ body {
 .sidebar {
     top: 0;
     left: 0;
-    height: 100%;
-    width: 250px;
+    height: 97%;
+    width: 270px;
     position: fixed;
     padding: 10px 14px;
     z-index: 100;
@@ -84,9 +84,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
 
-    /* Sidebar border */
-    border-right: 0.5px solid rgba(84, 84, 84, 0.6);
+.border {
+    border-right: 1.5px solid rgba(84, 84, 84, 0.6);
+    height: 100%;
 }
 
 .sidebar .bottom-content{
@@ -95,16 +97,16 @@ body {
 
 .home {
     position: relative;
-    left: 250px;
+    left: 270px;
     height: 100vh;
-    width: calc(100% - 250px);
+    width: calc(100% - 270px);
     background-color: transparent;
 }
 
 .search-header {
     position: relative;
-    left: 250px;
-    width: calc(100% - 250px);
+    left: 270px;
+    width: calc(100% - 270px);
     padding: 30px;
     color: var(--text-color);
     display: flex;

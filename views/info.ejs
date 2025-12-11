@@ -4,56 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title><%= info.name %></title>
+    
     <link rel="stylesheet" href="/css/info.css">
-    <title>Cineport</title>
+
+    <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        body {
+            background-image: url("<%= info.backdrop %>");
+            background-attachment: fixed;
+            background-size: cover;
+            z-index: -1;
+        }
+    </style>
+
 </head>
 
 <body>
-    <h1>Info</h1>
-    <p>
-        <%= info.title %>
-    </p>
-    <p>
-        <%= info.summary %>
-    </p>
-    <p>Genre</p>
-    <% info.genre.forEach(item=> { %>
-        <p>
-            <%= item %>
-        </p>
-        <% }) %>
-
-            <p>Available at:</p>
-
-            <% info.sources.forEach(source=> { %>
-                <div>
+    <div class="background-opacity">
+        <section class="movie-info-container">
+            <nav class="back-button">
+                <a href="/">
+                    <i class='bx  bx-chevron-left'></i> 
+                </a>
+            </nav>
+            <div class="main-content">
+                <span class="movie-title"><%= info.name %></span>
+                <p>
+                    <%= info.summary %>
+                </p>
+                <p>Genre</p>
+                <% info.genre.forEach(item=> { %>
                     <p>
-                        <%= source.name %>
+                        <%= item %>
                     </p>
-                    <a href="<%= source.iosURL %>">iOS</a>
-                    <a href="<%= source.androidURL %>">Android</a>
-                    <a href="<%= source.webURL %>">Web</a>
-                    <img src="<%= source.logo %>" alt="<%= source.name %> logo">
-                </div>
                 <% }) %>
+            </div>
+            </section>
+        <section class="movie-source-container">
+    
+        </section>
+    </div>
+<!--     
 
-                    <img src="<%= info.poster %>" alt="<%= info.title %> poster">
-                    <% if (info.episodes) { %>
-                        <p>Episodes</p>
-                        <% info.episodes.forEach(episode=> { %>
-                            <div>
-                                <p>Season: <%= episode.season_number %>
-                                </p>
-                                <p>Episode: <%= episode.episode_number %>
-                                </p>
-                                <p>
-                                    <%= episode.name %>
-                                </p>
-                                <img src="<%= episode.thumbnail_url%>"
-                                    alt="Episode <%= episode.episode_number %> thumbnail" class="thumbnail">
-                            </div>
-                            <% }) %>
-                                <% } %>
+    <p>Available at:</p>
+
+    <% info.sources.forEach(source=> { %>
+        <div>
+            <p>
+                <%= source.name %>
+            </p>
+            <a href="<%= source.iosURL %>">iOS</a>
+            <a href="<%= source.androidURL %>">Android</a>
+            <a href="<%= source.webURL %>">Web</a>
+            <img src="<%= source.logo %>" alt="<%= source.name %> logo">
+        </div>
+    <% }) %>
+
+    <img src="<%= info.poster %>" alt="<%= info.title %> poster">
+    <% if (info.episodes) { %>
+        <p>Episodes</p>
+        <% info.episodes.forEach(episode=> { %>
+            <div>
+                <p>Season: <%= episode.season_number %>
+                </p>
+                <p>Episode: <%= episode.episode_number %>
+                </p>
+                <p>
+                    <%= episode.name %>
+                </p>
+                <img src="<%= episode.thumbnail_url%>"
+                    alt="Episode <%= episode.episode_number %> thumbnail" class="thumbnail">
+            </div>
+        <% }) %>
+    <% } %> -->
 </body>
 
 </html>

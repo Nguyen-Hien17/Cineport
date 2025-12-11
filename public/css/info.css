@@ -1,4 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Work Sans", sans-serif;
+}
+
+:root {
+    --gradient-start: #040E22;
+    --gradient-end: #0E2D6B;
+    --text-color: #FFFFFF;
+    --search-box-color: rgba(220, 220, 220, 0.65);
+}
+
+body {
+    color: var(--text-color)
+}
+
+.background-opacity {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.movie-info-container {
+    height: 100vh;
+    width: 55%;
+    padding: 30px
+}
+
+.back-button {
+    font-size: 5rem;
+}
+
+.back-button a {
+    display: flex;
+    align-items: center;
+}
+
+.back-button a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.movie-source-container {
+    height: 100vh;
+    width: 45%;
+    background: linear-gradient(90deg,rgba(4, 14, 34, 0.8) 0%, rgba(14, 45, 107, 0.8) 100%);
+    border-radius: 50px 0px 0px 50px;
+}
+
+/* 
 .thumbnail{
     width: 100px;
     height: 150px;
-}
+} */

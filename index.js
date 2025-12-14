@@ -51,9 +51,9 @@ app.get ('/sidebar', (req, res) => {
   res.render('component/sidebar');
 });
 
-// app.get ('/search', (req, res) => {
-//   res.render('search');
-// });
+app.get ('/add-on', (req, res) => {
+  res.render('add-on');
+});
 
 app.use('/search', require('./routes/search'));
 

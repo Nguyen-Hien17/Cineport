@@ -143,11 +143,11 @@ body {
 }
 
 .home {
-    padding: 10px 40px;
+    padding: 50px 40px;
 }
 
 .home .title {
     color: var(--text-color);
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 600;
 }

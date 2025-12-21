@@ -129,6 +129,20 @@
                         <% } %>
         </div>
         <div class="source-list">
+            <div class="section-header">
+                <span>Available at:</span>
+                <% info.sources.forEach(source=> { %>
+                <div>
+                    <p>
+                        <%= source.name %>
+                    </p>
+                    <a href="<%= source.iosURL %>">iOS</a>
+                    <a href="<%= source.androidURL %>">Android</a>
+                    <a href="<%= source.webURL %>">Web</a>
+                    <img src="<%= source.logo %>" alt="<%= source.name %> logo">
+                </div>
+                <% }) %>
+            </div>
         </div>
     </section>
     </div>

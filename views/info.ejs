@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title><%= info.name %></title>
-    
+
+    <title>
+        <%= info.name %>
+    </title>
+
     <link rel="stylesheet" href="/css/info.css">
 
     <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
@@ -27,17 +29,25 @@
         <section class="movie-info-container">
             <nav class="back-button">
                 <a href="/">
-                    <i class='bx  bx-chevron-left'></i> 
+                    <i class='bx  bx-chevron-left'></i>
                 </a>
             </nav>
             <div class="main-content">
                 <div class="movie-title">
-                    <span><%= info.name %></span>
+                    <span>
+                        <%= info.name %>
+                    </span>
                 </div>
                 <div class="general-info">
-                    <span><%= info.runtime%> minutes</span>
-                    <span><%= info.releaseYear%></span>
-                    <span><%= info.rating%></span>
+                    <span>
+                        <%= info.runtime%> minutes
+                    </span>
+                    <span>
+                        <%= info.releaseYear%>
+                    </span>
+                    <span>
+                        <%= info.rating%>
+                    </span>
                 </div>
                 <div class="movie-genre">
                     <div class="section-header">
@@ -45,10 +55,10 @@
                     </div>
                     <div class="genre-list">
                         <% info.genre.forEach(item=> { %>
-                        <span class="genre-item">
-                            <%= item %>
-                        </span>
-                        <% }) %>
+                            <span class="genre-item">
+                                <%= item %>
+                            </span>
+                            <% }) %>
                     </div>
                 </div>
                 <div class="movie-summary">
@@ -59,42 +69,70 @@
                         <%= info.summary %>
                     </span>
                 </div>
-                <div class="watchlist-button">
-                    <button id="watchlist-btn">Add to Watchlist</button>
-                </div>
-            </div>
-            </section>
-        <section class="movie-source-container">
-            <div class="episode-list">
-                <div class="section-header">
-                    <span>Episodes</span>
-                </div>
-                <% if (info.episodes) { %>
-                    <% info.episodes.forEach(episode=> { %>
-                        <div class="episodes">
-                            <img src="<%= episode.thumbnail_url%>" alt="Episode <%= episode.episode_number %> thumbnail" class="thumbnail">
-                            <div class="episode-info">
-                                <span class="ep-name">
-                                    <%= episode.name %>
-                                </span>
-                                <br>
-                                <span class="season">
-                                    Season: <%= episode.season_number %>
-                                </span>
-                                <br>
-                                <span class="ep-number">
-                                    Episode: <%= episode.episode_number %>
-                                </span>
-                            </div>
+                <% if (!status && user) { %>
+                    <h1>Add to watchlist:</h1>
+                    <form action="/watchlist/add" method="GET">
+                        <select name="watchStatus">
+                            <option value="watching">Watching</option>
+                            <option value="completed">Completed</option>
+                            <option value="plan_to_watch">Plan to watch</option>
+                            <option value="dropped">Dropped</option>
+                        </select>
+                        <input type="hidden" name="titleId" value="<%= info.id %>">
+                        <div class="watchlist-button">
+                            <button type="submit" id="watchlist-btn">Add</button>
                         </div>
-                    <% }) %>
-                <% } %>
-            </div>
-            <div class="source-list">
-            </div>
-        </section>
+                    </form>
+                    <% } else if(status && user) { %>
+                        <h1>Progress: <%=status.status %>
+                        </h1>
+                        <form action="/watchlist/add" method="GET">
+                            <select name="watchStatus">
+                                <option value="watching">Watching</option>
+                                <option value="completed">Completed</option>
+                                <option value="plan_to_watch">Plan to watch</option>
+                                <option value="dropped">Dropped</option>
+                            </select>
+                            <input type="hidden" name="titleId" value="<%= info.id %>">
+                            <div class="watchlist-button">
+                            <button type="submit" id="watchlist-btn">Update</button></div>
+                        </form>
+                        <% } %>
+
     </div>
-    
+    </section>
+    <section class="movie-source-container">
+        <div class="episode-list">
+            <div class="section-header">
+                <span>Episodes</span>
+            </div>
+            <% if (info.episodes) { %>
+                <% info.episodes.forEach(episode=> { %>
+                    <div class="episodes">
+                        <img src="<%= episode.thumbnail_url%>" alt="Episode <%= episode.episode_number %> thumbnail"
+                            class="thumbnail">
+                        <div class="episode-info">
+                            <span class="ep-name">
+                                <%= episode.name %>
+                            </span>
+                            <br>
+                            <span class="season">
+                                Season: <%= episode.season_number %>
+                            </span>
+                            <br>
+                            <span class="ep-number">
+                                Episode: <%= episode.episode_number %>
+                            </span>
+                        </div>
+                    </div>
+                    <% }) %>
+                        <% } %>
+        </div>
+        <div class="source-list">
+        </div>
+    </section>
+    </div>
+
 
     <!-- <p>Available at:</p>
 

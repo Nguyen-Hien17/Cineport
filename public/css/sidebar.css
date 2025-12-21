@@ -151,3 +151,7 @@ body {
     font-size: 4rem;
     font-weight: 600;
 }
+
+.accountDetails {
+    color: var(--text-color);
+}

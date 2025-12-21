@@ -57,6 +57,8 @@ app.get ('/add-on', (req, res) => {
 
 app.use('/search', require('./routes/search'));
 
+app.use('/account', require('./routes/account'));
+
 app.listen(port, () => {
   console.log(`listening on http://localhost:${port}`)
 })

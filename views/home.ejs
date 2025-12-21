@@ -27,28 +27,28 @@
                     </div>
                 </a>
             </header>
-    
+
             <div class="menu-bar">
                 <div class="menu">
-                        <!-- Add link -->
+                    <!-- Add link -->
                     <ul class="sidebar-links">
                         <li class="nav-link">
                             <a href="#">
-                                <i class='bx  bx-home icon'></i> 
+                                <i class='bx  bx-home icon'></i>
                                 <span class="text">Home</span>
                             </a>
                         </li>
-                        
+
                         <li class="nav-link">
                             <a href="/watchlist">
-                                <i class='bx  bx-categories icon'></i> 
+                                <i class='bx  bx-categories icon'></i>
                                 <span class="text">Watchlist</span>
                             </a>
                         </li>
-                        
+
                         <li class="nav-link">
                             <a href="#">
-                                <i class='bx  bx-grid-plus icon'></i> 
+                                <i class='bx  bx-grid-plus icon'></i>
                                 <span class="text">Add-on</span>
                             </a>
                         </li>
@@ -57,15 +57,23 @@
             </a>
         </header>
 
-            <div class="bottom-content">
-                <li class="nav-link">
-                    <a href="#">
-                        <i class='bx  bx-user icon'></i>
-                        <span class="text">Account</span>
-                    </a>
-                </li>
-            </div>
-        </div>
+                    <div class="bottom-content">
+                        <li class="nav-link">
+                            <% if (user) { %>
+                                <a href="/account/<%= user._id %>">
+                                    <i class='bx  bx-user icon'></i>
+                                    <span class="text">Account</span>
+                                </a>
+                                <% } else { %>
+                                    <a href="/login">
+                                        <i class='bx  bx-user icon'></i>
+                                        <span class="text">Login</span>
+                                    </a>
+                                <% } %>
+
+                        </li>
+                    </div>
+                </div>
     </nav>
 
     <!-- Search bar -->

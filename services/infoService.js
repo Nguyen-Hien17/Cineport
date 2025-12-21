@@ -1,12 +1,15 @@
 const axios = require('axios');
 const { User } = require('../models/user');
 
-exports.getTitleInfo = async (imdbID) => {
-
+exports.getTitleInfo = async (imdbID, region) => {
+    
+    // 1. Pass the dynamic 'region' variable into the API call
     const infoPromise = axios.get(
-        `https://api.watchmode.com/v1/title/${imdbID}/details/?apiKey=${process.env.WATCHMODE_KEY}&append_to_response=episodes,sources&regions=US`
+        `https://api.watchmode.com/v1/title/${imdbID}/details/?apiKey=${process.env.WATCHMODE_KEY}&append_to_response=episodes,sources&regions=${region}`
     );
 
+    // Note: We typically don't filter the source list by region here. 
+    // Fetching the master list ensures we have logo metadata for any source ID returned by the details endpoint.
     const sourceListPromise = axios.get(
         `https://api.watchmode.com/v1/sources/?apiKey=${process.env.WATCHMODE_KEY}`
     );
@@ -29,6 +32,7 @@ exports.getTitleInfo = async (imdbID) => {
         ...(info.episodes && { episodes: info.episodes })
     };
 
+    // The 'info.sources' array is now automatically filtered to the requested region by the API
     let uniqueSources = getUniqueSources(info.sources);
 
     sourceList.sort((a, b) => a.id - b.id);
@@ -48,6 +52,30 @@ exports.getTitleInfo = async (imdbID) => {
     });
 
     title.sources = sources;
+
+    if (info.episodes) {
+        title.episodes = info.episodes.map(ep => {
+            // Episode sources are also filtered by the API based on the 'regions' param passed earlier
+            let uniqueEpSources = getUniqueSources(ep.sources || []);
+
+            let mappedEpSources = uniqueEpSources.map(src => {
+                const target = binarySearch(sourceList, src.source_id);
+
+                return {
+                    name: src.name,
+                    iosURL: src.ios_url,
+                    androidURL: src.android_url,
+                    webURL: src.web_url,
+                    logo: target ? target.logo_100px : null
+                };
+            });
+
+            return {
+                ...ep,
+                sources: mappedEpSources
+            };
+        });
+    }
 
     return title;
 };

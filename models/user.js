@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     watchlist: [{
         titleId: { type: String },
-        status: { type: String, enum:['watching', 'completed', 'dropped', 'plan_to_watch'] }
+        status: { type: String, enum:['watching', 'completed', 'dropped', 'plan_to_watch'] },
+        episodesWatched: { type: String}
     }]
 });
 

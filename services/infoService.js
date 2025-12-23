@@ -1,8 +1,9 @@
 const axios = require('axios');
 const { User } = require('../models/user');
+const mongoose = require('mongoose');
 
 exports.getTitleInfo = async (imdbID, region) => {
-    
+
     // 1. Pass the dynamic 'region' variable into the API call
     const infoPromise = axios.get(
         `https://api.watchmode.com/v1/title/${imdbID}/details/?apiKey=${process.env.WATCHMODE_KEY}&append_to_response=episodes,sources&regions=${region}`
@@ -66,7 +67,7 @@ exports.getTitleInfo = async (imdbID, region) => {
                     iosURL: src.ios_url,
                     androidURL: src.android_url,
                     webURL: src.web_url,
-                    logo: target ? target.logo_100px : null
+                    logo: target ? target.logo_100px : null,
                 };
             });
 
@@ -82,7 +83,7 @@ exports.getTitleInfo = async (imdbID, region) => {
 
 exports.checkInWatchlist = async (userId, titleId) => {
     const filter = {
-        _id: userId,
+        _id: new mongoose.Types.ObjectId(userId),
         'watchlist.titleId': titleId
     };
 

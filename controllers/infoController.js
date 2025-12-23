@@ -15,6 +15,7 @@ exports.index = async (req, res) => {
     res.render('info', {
         info: info,
         status: status,
-        region: region
+        region: region,
+        user: req.session.userId
     });
 }

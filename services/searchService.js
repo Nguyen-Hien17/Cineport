@@ -4,8 +4,6 @@ exports.searchByKeyword = async (keyword) => {
     let results = await axios.get(`
         https://api.watchmode.com/v1/search/?apiKey=${process.env.WATCHMODE_KEY}&search_field=name&search_value=${keyword}`);
 
-    console.log(results.data.title_results)
-
     let titleResults = results.data.title_results;
 
     const promises = [];
@@ -29,8 +27,6 @@ exports.searchByKeyword = async (keyword) => {
         title: result.data.title,
         image: result.data.poster
     }));
-
-    console.log(titles);
 
     return titles;
 }

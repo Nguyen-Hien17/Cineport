@@ -71,6 +71,7 @@
                 <h2>Account</h2>
                 <p>Email: <%= user.email %></p>
                 <!-- Add more account details as needed -->
+                 <button onclick="window.location.href='/account/<%= user._id %>/export'">Export Watchlist</button>
             </div>
             <% } else { %>
                 <% } %>

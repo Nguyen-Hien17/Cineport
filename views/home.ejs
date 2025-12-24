@@ -54,26 +54,30 @@
                         </li>
                     </ul>
                 </div>
-            </a>
-        </header>
+                </a>
+                </header>
 
-                    <div class="bottom-content">
-                        <li class="nav-link">
-                            <% if (user) { %>
-                                <a href="/account/<%= user._id %>">
+                <div class="bottom-content">
+                    <li class="nav-link">
+                        <% if (user) { %>
+                            <a href="/account/<%= user._id %>">
+                                <i class='bx  bx-user icon'></i>
+                                <span class="text">Account</span>
+                            </a>
+                            <a href="/login/logout">
+                                <i class='bx  bx-user icon'></i>
+                                <span class="text">Logout</span>
+                            </a>
+                            <% } else { %>
+                                <a href="/login">
                                     <i class='bx  bx-user icon'></i>
-                                    <span class="text">Account</span>
+                                    <span class="text">Login</span>
                                 </a>
-                                <% } else { %>
-                                    <a href="/login">
-                                        <i class='bx  bx-user icon'></i>
-                                        <span class="text">Login</span>
-                                    </a>
                                 <% } %>
 
-                        </li>
-                    </div>
+                    </li>
                 </div>
+            </div>
     </nav>
 
     <!-- Search bar -->

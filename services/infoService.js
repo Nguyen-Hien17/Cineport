@@ -2,7 +2,7 @@ const axios = require('axios');
 const { User } = require('../models/user');
 const mongoose = require('mongoose');
 
-exports.getTitleInfo = async (imdbID, region) => {
+exports.getTitleInfo = async (imdbID, region, user) => {
 
     // 1. Pass the dynamic 'region' variable into the API call
     const infoPromise = axios.get(
@@ -33,8 +33,16 @@ exports.getTitleInfo = async (imdbID, region) => {
         ...(info.episodes && { episodes: info.episodes })
     };
 
-    // The 'info.sources' array is now automatically filtered to the requested region by the API
-    let uniqueSources = getUniqueSources(info.sources);
+    const disabledServices = (user && user.addOn)
+        ? user.addOn.filter(addon => addon.isEnabled === false).map(addon => addon.service)
+        : [];
+
+    // --- Filter Main Title Sources ---
+    let uniqueSources = getUniqueSources(info.sources).filter(source => {
+        // Only keep the source if it's NOT in the disabledServices list
+        return !disabledServices.includes(source.name);
+    });
+
 
     sourceList.sort((a, b) => a.id - b.id);
 

@@ -35,3 +35,14 @@ exports.exportWatchlist = async (userId) => {
 
     fs.writeFileSync(`./public/watchlist/${userId}-watchlist.json`, jsonString);
 };
+
+exports.deleteAccount = async (userId) => {
+    await User.deleteOne({ _id: userId });
+}
+
+exports.setAddonStatus = async (userId, service, isEnabled) => {
+    await User.updateOne(
+        { _id: userId, "addOn.service": service },
+        { $set: { "addOn.$.isEnabled": isEnabled } }
+    );
+};

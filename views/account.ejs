@@ -11,70 +11,19 @@
 
 <body>
     <div class="home">
-        <nav class="sidebar">
-            <div class="border">
-                <header>
-                    <a href="#">
-                        <div>
-                            <span class="cineport-logo">
-                                <img src="/image/cineport_logo.png" alt="Cineport Logo">
-                            </span>
-                        </div>
-                    </a>
-                </header>
-
-                <div class="menu-bar">
-                    <div class="menu">
-                        <!-- Add link -->
-                        <ul class="sidebar-links">
-                            <li class="nav-link">
-                                <a href="/">
-                                    <i class='bx  bx-home icon'></i>
-                                    <span class="text">Home</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-link">
-                                <a href="/watchlist">
-                                    <i class='bx  bx-categories icon'></i>
-                                    <span class="text">Watchlist</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-link">
-                                <a href="#">
-                                    <i class='bx  bx-grid-plus icon'></i>
-                                    <span class="text">Add-on</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    </a>
-                    </header>
-
-                    <div class="bottom-content">
-                        <li class="nav-link">
-                            <% if (user) { %>
-                                <a href="/account/<%= user._id %>">
-                                    <i class='bx  bx-user icon'></i>
-                                    <span class="text">Account</span>
-                                </a>
-                                <% } %>
-
-                        </li>
-                    </div>
+        <%- include('component/sidebar') %>
+            <% if (user) { %>
+                <div class="accountDetails">
+                    <h1>Settings</h1>
+                    <h2>Account</h2>
+                    <p>Email: <%= user.email %>
+                    </p>
+                    <!-- Add more account details as needed -->
+                    <button onclick="window.location.href='/account/<%= user._id %>/export'">Export Watchlist</button>
+                    <button onclick="window.location.href='/account/<%= user._id %>/delete'">Delete Account</button>
                 </div>
-        </nav>
-        <% if (user) { %>
-            <div class="accountDetails">
-                <h1>Settings</h1>
-                <h2>Account</h2>
-                <p>Email: <%= user.email %></p>
-                <!-- Add more account details as needed -->
-                 <button onclick="window.location.href='/account/<%= user._id %>/export'">Export Watchlist</button>
-            </div>
-            <% } else { %>
-                <% } %>
+                <% } else { %>
+                    <% } %>
     </div>
 
 </body>

@@ -10,6 +10,8 @@ const port = process.env.PORT || 3000
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.set('trust proxy', 1);
+
 app.use(session({
   secret: 'YOUR_VERY_STRONG_SESSION_SECRET',
   resave: false,

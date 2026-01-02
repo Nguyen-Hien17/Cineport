@@ -26,7 +26,15 @@ exports.registerUser = async (username, email, passwd) => {
         userName: username,
         email: email,
         password: bcrypt.hashSync(passwd, 10),
-        watchlist: []
+        watchlist: [],
+        addOn: [{
+            "service": "Disney+",
+            "isEnabled": false
+        },
+        {
+            "service": "Netflix",
+            "isEnabled": "true"
+        }]
     });
 
     user.save();

@@ -20,7 +20,7 @@ exports.getWatchlist = async (watchlist) => {
 
     // Build result array with status included
     const shows = results.map((result, index) => ({
-        id: result.data.imdb_id,
+        id: result.data.id,
         title: result.data.title,
         image: result.data.poster,
 
@@ -31,34 +31,38 @@ exports.getWatchlist = async (watchlist) => {
     return shows;
 };
 
-exports.addToWatchlist = async (userId, titleId, status) => {
-    // 1. Check if the title already exists in the watchlist
-    // 2. If it exists, update its status
-    // 3. If it doesn't exist, push a new entry to the watchlist
+exports.addToWatchlist = async (userId, titleId, status, progress) => {
+    // 1. Prepare the progress string (e.g., "S1:E5")
+    // Default to S1:E0 if not provided
+    const progressString = `${progress || "S1:E0"}`;
 
+    // 2. Try to update an existing entry
     const doc = await User.updateOne(
         {
             _id: userId,
-            // Check if the titleId already exists in the watchlist array
             "watchlist.titleId": titleId
         },
         {
-            // If the filter (above) matches (title exists), $set the new status.
-            // The arrayFilters specifies which element to update.
-            $set: { "watchlist.$.status": status }
+            $set: {
+                "watchlist.$.status": status,
+                "watchlist.$.episodesWatched": progressString 
+            }
         }
     );
 
-    // If doc.matchedCount is 0, it means the title was NOT found in the watchlist.
+    // 3. If no match found, push a new entry
     if (doc.matchedCount === 0) {
-        // The title does not exist, so we use the $push operator to add a new entry.
         await User.updateOne(
             { _id: userId },
             {
                 $push: {
-                    watchlist: { titleId: titleId, status: status }
+                    watchlist: {
+                        titleId: titleId,
+                        status: status,
+                        episodesWatched: progressString
+                    }
                 }
             }
         );
     }
-}
+};

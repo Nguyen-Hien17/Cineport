@@ -9,8 +9,11 @@ exports.add = async (req, res) =>{
     let userId = req.session.userId;
     let status = req.query.watchStatus;
     let titleId = req.query.titleId;
+    let episodesWatched = req.query.episodesWatched;
 
-    await watchlistService.addToWatchlist(userId, titleId, status);
+    console.log(episodesWatched)
+
+    await watchlistService.addToWatchlist(userId, titleId, status, episodesWatched);
 
     res.redirect(`/info/${titleId}`);
 }

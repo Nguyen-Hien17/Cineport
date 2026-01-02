@@ -15,83 +15,99 @@
     <title>Cineport</title>
 </head>
 
-<body>
-    <nav class="sidebar">
-        <div class="border">
-            <header>
-                <a href="#">
-                    <div>
-                        <span class="cineport-logo">
-                            <img src="/image/cineport_logo.png" alt="Cineport Logo">
-                        </span>
-                    </div>
-                </a>
-            </header>
-    
-            <div class="menu-bar">
-                <div class="menu">
-                        <!-- Add link -->
-                    <ul class="sidebar-links">
-                        <li class="nav-link">
-                            <a href="#">
-                                <i class='bx  bx-home icon'></i> 
-                                <span class="text">Home</span>
-                            </a>
-                        </li>
-                        
-                        <li class="nav-link">
-                            <a href="/watchlist">
-                                <i class='bx  bx-categories icon'></i> 
-                                <span class="text">Watchlist</span>
-                            </a>
-                        </li>
-                        
-                        <li class="nav-link">
-                            <a href="#">
-                                <i class='bx  bx-grid-plus icon'></i> 
-                                <span class="text">Add-on</span>
-                            </a>
-                        </li>
-                    </ul>
+<body data-user-id="<%= userId %>">
+    <%- include('component/sidebar') %>
+
+        <!-- Main page content goes here. -->
+        <section class="home">
+            <div class="title">
+                <span>Add-on</span>
+            </div>
+            <!-- <div class="add-on-container">
+                <div class="add-on-card">
+                    <img src="/image/temp_logo/dp_logo.png" alt="logo" class="service-img">
+                    <span class="service-name">Disney+</span>
+                    <label class="switch">
+                        <% let disneyAddon=user.addOn.find(addon=> addon.service === 'Disney+'); %>
+                            <% let isDisneyEnabled=disneyAddon ? disneyAddon.isEnabled : false; %>
+                                <input type="checkbox" value="Disney+" <%=isDisneyEnabled ? 'checked' : '' %>
+                                class="service-toggle">
+                                <span class="slider round"></span>
+                    </label>
                 </div>
-            </a>
-        </header>
+                <div class="add-on-card">
+                    <img src="/image/temp_logo/n_logo.jpg" alt="logo" class="service-img">
+                    <span class="service-name">Netflix</span>
+                    <label class="switch">
+                        <input type="checkbox" value="Netflix" checked class="service-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div> -->
+            <% const availableServices=[ { name: 'Disney+' , logo: 'dp_logo.png' }, { name: 'Netflix' ,
+                logo: 'n_logo.jpg' } ]; %>
 
-            <div class="bottom-content">
-                <li class="nav-link">
-                    <a href="#">
-                        <i class='bx  bx-user icon'></i>
-                        <span class="text">Account</span>
-                    </a>
-                </li>
-            </div>
-        </div>
-    </nav>
+                <div class="add-on-container">
+                    <% availableServices.forEach(item=> {
+                        const userSetting = user.addOn.find(a => a.service === item.name);
+                        const isChecked = userSetting ? userSetting.isEnabled : false;
+                        %>
+                        <div class="add-on-card">
+                            <img src="/image/temp_logo/<%= item.logo %>" alt="logo" class="service-img">
 
-    <!-- Main page content goes here. -->
-    <section class="home">
-        <div class="title">
-            <span>Add-on</span>
-        </div>
-        <div class="add-on-container">
-            <div class="add-on-card">
-                <img src="/image/temp_logo/dp_logo.png" alt="logo" class="service-img">
-                <span class="service-name">Disney+</span>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="add-on-card">
-                <img src="/image/temp_logo/n_logo.jpg" alt="logo" class="service-img">
-                <span class="service-name">Netflix</span>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-        </div>
-    </section>
+                            <span class="service-name text-nowrap">
+                                <%= item.name %>
+                            </span>
+
+                            <label class="switch">
+                                <input type="checkbox" value="<%= item.name %>" class="service-toggle" <%=isChecked
+                                    ? 'checked' : '' %>
+                                >
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <% }); %>
+                </div>
+
+        </section>
+
+        <script>
+            const userId = document.body.dataset.userId;
+
+            if (!userId) {
+                console.warn('User not logged in');
+            }
+
+            document.querySelectorAll('.service-toggle').forEach(checkbox => {
+                checkbox.addEventListener('change', async (event) => {
+                    const serviceName = event.target.value;
+                    const isEnabled = event.target.checked;
+
+                    try {
+                        const response = await fetch(`/account/${userId}/toggle-addon`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                service: serviceName,
+                                isEnabled: isEnabled
+                            })
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Failed to update service status');
+                        }
+
+                        console.log(`${serviceName} is now ${isEnabled ? 'ON' : 'OFF'}`);
+                    } catch (error) {
+                        console.error('Error:', error);
+                        event.target.checked = !isEnabled;
+                        alert('Could not update setting. Please try again.');
+                    }
+                });
+            });
+        </script>
 
 </body>
 

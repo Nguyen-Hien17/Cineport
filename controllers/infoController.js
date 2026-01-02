@@ -6,7 +6,7 @@ exports.index = async (req, res) => {
     const region = req.query.region || req.session.region || 'US';
 
     // 2. Pass the region to the service
-    let info = await infoService.getTitleInfo(req.params.imdb_id, region);
+    let info = await infoService.getTitleInfo(req.params.imdb_id, region, req.session.user);
 
     // 3. Check watchlist status (usually independent of region)
     let status = await infoService.checkInWatchlist(req.session.userId, req.params.imdb_id);
@@ -15,6 +15,7 @@ exports.index = async (req, res) => {
     res.render('info', {
         info: info,
         status: status,
-        region: region
+        region: region,
+        user: req.session.userId
     });
 }

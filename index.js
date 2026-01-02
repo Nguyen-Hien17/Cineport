@@ -29,10 +29,9 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
-app.use((req, res, next) => {
-  res.locals.user = req.session.user || null;
-  next();
-});
+const userLocals = require('./middleware/userLocals');
+
+app.use(userLocals);
 
 app.get('/', (req, res) => {
   res.render('home');

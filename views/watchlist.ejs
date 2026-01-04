@@ -4,15 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/movie.css" />
     <link rel="stylesheet" href="/css/watchlist.css">
-    <title>Cineport</title>
+    <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <title>Cineport - Watchlist</title>
 </head>
 
 <body>
-    <h1>watchlist</h1>
-    <% watchlist.forEach(item=> { %>
-        <a href="/info/<%= item.id %>"><img src="<%= item.image %>" alt="<%= item.title %>" class="movie"></a>
-        <% }) %>
+    <%- include('component/sidebar') %>
+
+        <section class="home">
+            <div>
+                <span class="title">Your Watchlist</span>
+                <div class="movie-carousel">
+                    <% watchlist.forEach(item=> { %>
+                        <a href="/info/<%= item.id %>">
+                            <img src="<%= item.image %>" alt="<%= item.title %>" class="movie2">
+                        </a>
+                        <% }) %>
+                </div>
+            </div>
+        </section>
 </body>
 
 </html>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cineport</title>
     <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/account.css" />
     <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -16,12 +17,28 @@
                 <div class="accountDetails">
                     <h1>Settings</h1>
                     <h2>Account</h2>
-                    <p>Email: <%= user.email %>
-                    </p>
+                    <div class="info">
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQAnAMBIgACEQEDEQH/xAAbAAEBAAMBAQEAAAAAAAAAAAAABgMEBQECB//EADYQAAICAQIBCAcIAwEAAAAAAAABAgMEBRFREhMhMUFhcaFScoGRksHRBhUiIzVCYrEzU+EU/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD9wAAAAAAAAAMWTkVYtTtulyYrzfADKCay9byLW1Quahx65M0ZZmVLrybvjYFmCQq1LMqknHIm+6b5S8ztabrFeTJVXpV2vq4S+gHVAAAAAAAAAAAAAAAAAADxJPVs15mU2m+bh0QXzKHVrXTp984vZ8nZe3o+ZIAAAVALoe67HuABVaLmPKxdpv8ANr6Jd67GdAl9AtdeoKG/4bItP+yoIoAAAAAAAAAAAAAAADmfaHf7ufrxJgrtXqd2n3RS3aXKXs6SRAAAqAAA29K/Ucd/zK8ltBq5zUYy/bWm2/L5lSRQAAAAAAAAAAAAAAABrdbPqJDU8N4eVKGz5EnyoPu4FeYMvFqy6XVdHddjXWn3ARgOll6NlUSbrjz0Oxx6/caMqbYvaVVkX3waKjGDYpwsq6W1dFni47LzO1pmjKiatympzXSorqX1YVl0PDeNjOdi2st2bXBdiOmAQAAAAAAAAAAAAAAHzZONcJTskoxj1t9hws7XZtuGGkl6cl0vwQHcstrqjyrZxhHjJ7GpZq+DB7c9yvVi35krZZZbLl2zlOXFs+QKj77wuNnwHn33hLts+EmABULW8J9tnwCOt4TeznNeMWS/SeAWVOoYlz2rvg3wb2fmbO5C7s2sTUcrFf5djcV+yXSgLAHP0/VacxqD/Lt9F9vgdAAAAAAAAAAeTkoRcpPaKW7fA9OV9or3Xhxri9ucls/BAcjVNQnm27RbVMX+GPHvZogFQAAAAAAAAAAHqbTTT270Umi6i8qHM3f5orr9JfUmjNiXOjKqtX7ZL3dpFWgPE9+k9AAAAAABO/aWzfKqh6MN/e/+FES2vS5Wpz/jGK8gOcACoAAAAAAAAAAAAALTDnzuJRY+uVcW/cZjS0aXK0yjuW3mbpFAAAAAAlNb/UrfZ/SKs4P2hw5uxZVceVHbae3Z3gcMAFQAAAAAAAAAAAA+6q53WRrri5Sk9kkBUaJ+mU79/wDZvmHEp/8APjVU7puEUn8zMRQAAAAAAAHKzNFovbnS+Zm+C/C/YcjI0nMob/LdkfSh0+RWACGlFxe0k4vg1szwt7KoWLayEZLhJbmtZpeFPrx4r1d0BIgp5aFhvq52PhP6nw9Axv8Abd719ComwUa0DG/23e9fQ+46FhrrdsvGX0AmT6hCVkuTCLlLgluVlel4VfVRF+s2zahXCtcmEIxXCK2IqZxdFyrtnYlTDjLr9x3cLAow4tVreb65y6WzbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH/2Q=="
+                            alt="User Icon" class="user-icon">
+                        <p>Email: <%= user.email %>
+                        </p>
+                    </div>
+                    <h1>Language</h1>
+                    <div class="language">
+                        <p>English</p>
+                    </div>
                     <!-- Add more account details as needed -->
-                    <button onclick="window.location.href='/account/<%= user._id %>/export'">Export Watchlist</button>
-                    <button onclick="window.location.href='/account/<%= user._id %>/delete'">Delete Account</button>
+                    <button onclick="window.location.href='/account/<%= user._id %>/export'" class="exportBtn">Export
+                        Watchlist</button>
+                    <button onclick="window.location.href='/account/<%= user._id %>/delete'" class="deleteBtn">Delete
+                        Account</button>
                 </div>
+                <h1>Version</h1>
+                <div class="version">
+                    <p>1.0</p>
+                </div>
+                <h1>About</h1>
+                <a href="#">Terms of service</a>
                 <% } else { %>
                     <% } %>
     </div>

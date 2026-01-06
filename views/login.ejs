@@ -29,9 +29,34 @@
                 <div class="login-button">
                     <button type="submit">Log In</button>
                 </div>
+                <input type="hidden" name="region" id="regionInput" value="US">
             </form>
         </span>
     </nav>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const regionInput = document.getElementById('regionInput');
+
+            let regionToSet = 'US'; // Default fallback
+
+            // 1. If region is already in the URL, use that
+            if (urlParams.has('region')) {
+                regionToSet = urlParams.get('region');
+            } else {
+                // 2. Otherwise, detect from browser locale
+                const locale = navigator.language; // e.g., "en-GB"
+                regionToSet = locale.includes('-') ? locale.split('-')[1].toUpperCase() : 'US';
+            }
+
+            // 3. Set the hidden input value
+            if (regionInput) {
+                regionInput.value = regionToSet;
+                console.log("Hidden input set to:", regionInput.value);
+            }
+        });
+    </script>
 </body>
 
 </html>

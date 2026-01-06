@@ -16,46 +16,44 @@
                 <img src="image/cineport_logo.png" alt="">
             </a>
         </span>
+
         <span class="login-form">
             <form action="/login" method="POST" id="loginForm">
-                <!-- <label for="email">Email</label> -->
                 <li class="account-input">
                     <input type="email" placeholder="Enter your email" name="email">
                 </li>
-                <!-- <label for="password">Password</label>  -->
+
                 <li class="account-input">
                     <input type="password" placeholder="Password" name="password">
                 </li>
+
                 <div class="login-button">
                     <button type="submit">Log In</button>
                 </div>
+
+                <!-- Hidden region input -->
                 <input type="hidden" name="region" id="regionInput" value="US">
             </form>
         </span>
     </nav>
 
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const regionInput = document.getElementById('regionInput');
+        // Default fallback
+        const regionInput = document.getElementById('regionInput');
+        regionInput.value = 'US';
 
-            let regionToSet = 'US'; // Default fallback
-
-            // 1. If region is already in the URL, use that
-            if (urlParams.has('region')) {
-                regionToSet = urlParams.get('region');
-            } else {
-                // 2. Otherwise, detect from browser locale
-                const locale = navigator.language; // e.g., "en-GB"
-                regionToSet = locale.includes('-') ? locale.split('-')[1].toUpperCase() : 'US';
-            }
-
-            // 3. Set the hidden input value
-            if (regionInput) {
-                regionInput.value = regionToSet;
-                console.log("Hidden input set to:", regionInput.value);
-            }
-        });
+        // IP-based region detection
+        fetch('https://ipinfo.io/json?token=ec7e39db881fca')
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.country) {
+                    regionInput.value = data.country;
+                    console.log('Region set from IP:', data.country);
+                }
+            })
+            .catch(err => {
+                console.warn('IP region lookup failed, using US', err);
+            });
     </script>
 </body>
 

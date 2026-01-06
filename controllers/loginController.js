@@ -12,21 +12,25 @@ exports.login = async (req, res) => {
 
     if (user) {
         req.session.userId = user._id;
+
         const userObj = user.toObject();
         delete userObj.password;
         req.session.user = userObj;
-        req.session.region =
+
+        req.session.region = normalizeRegion(
             user.region ||
             req.body.region ||
-            req.query.region ||
-            'US';
+            req.query.region
+        );
+
         console.log('User logged in with region:', req.session.region);
+
         res.redirect('/');
     } else {
         return res.status(401).send({ message: 'Invalid credentials.' });
     }
+};
 
-}
 
 exports.logout = async (req, res) => {
     req.session.destroy(err => {
@@ -36,4 +40,13 @@ exports.logout = async (req, res) => {
         res.clearCookie('connect.sid');
         res.redirect('/');
     });
+}
+
+function normalizeRegion(region) {
+    if (!region) return 'US';
+
+    region = region.toUpperCase();
+
+    // Force VN → US
+    if (region === 'VN') return 'US';
 }
